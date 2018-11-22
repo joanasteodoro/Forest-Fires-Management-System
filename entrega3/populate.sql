@@ -47,19 +47,19 @@ insert into video values (9, '2018-01-01 01:20:00', '2018-01-01 01:30:00');
 insert into video values (10, '2018-01-01 01:30:00', '2018-01-01 01:40:00');
 
 --segmentoVideo
-insert into segmentoVideo values (1, '2018-01-01 00:00:00', 1, );
-insert into segmentoVideo values (1, '2018-01-01 00:00:00', 2);
-insert into segmentoVideo values (1, '2018-01-01 00:00:00', 3);
-insert into segmentoVideo values (1, '2018-01-01 00:00:00', 4);
-insert into segmentoVideo values (1, '2018-01-01 00:00:00', 5);
-insert into segmentoVideo values (2, '2018-01-01 00:00:00', 6);
-insert into segmentoVideo values (2, '2018-01-01 00:00:00', 7);
-insert into segmentoVideo values (2, '2018-01-01 00:00:00', 8);
-insert into segmentoVideo values (2, '2018-01-01 00:00:00', 9);
-insert into segmentoVideo values (3, '2018-01-01 00:00:00', 10);
-insert into segmentoVideo values (3, '2018-01-01 00:00:00', 11);
-insert into segmentoVideo values (3, '2018-01-01 00:00:00', 12);
-insert into segmentoVideo values (3, '2018-01-01 00:00:00', 13);
+insert into segmentoVideo values (1, '2018-01-01 00:00:00', 1, 20);
+insert into segmentoVideo values (1, '2018-01-01 00:00:00', 2, 24);
+insert into segmentoVideo values (1, '2018-01-01 00:00:00', 3, 21);
+insert into segmentoVideo values (1, '2018-01-01 00:00:00', 4, 22);
+insert into segmentoVideo values (1, '2018-01-01 00:00:00', 5, 40);
+insert into segmentoVideo values (2, '2018-01-01 00:00:00', 6, 14);
+insert into segmentoVideo values (2, '2018-01-01 00:00:00', 7, 74);
+insert into segmentoVideo values (2, '2018-01-01 00:00:00', 8, 16);
+insert into segmentoVideo values (2, '2018-01-01 00:00:00', 9. 54);
+insert into segmentoVideo values (3, '2018-01-01 00:00:00', 10, 84);
+insert into segmentoVideo values (3, '2018-01-01 00:00:00', 11, 29);
+insert into segmentoVideo values (3, '2018-01-01 00:00:00', 12, 31);
+insert into segmentoVideo values (3, '2018-01-01 00:00:00', 13, 39);
 
 --local
 insert into local values ('Lisboa');
@@ -173,13 +173,13 @@ insert into coordenador values (9);
 insert into coordenador values (10);
 
 --audita
-insert into audita values (1, 1, 'what', 1, '2018-01-01 00:00:00', '2018-01-01 00:20:00', '2018-01-01', 'oi');
-insert into audita values (2, 2, 'is', 2, '2018-01-01 00:10:00', '2018-01-01 01:00:00', '2018-01-01', 'tudo');
-insert into audita values (3, 3, 'nome', 3, '2018-01-01 00:55:00', '2018-01-01 02:00:00', '2018-01-01', 'bem');
-insert into audita values (4, 4, 'entidade', 4, '2018-01-01 01:00:00', '2018-01-01 01:50:00', '2018-01-01', 'gajas');
-insert into audita values (5, 5, 'exactly', 5, '2018-01-01 00:40:00', '2018-01-01 02:00:00', '2018-01-01', 'ya');
-insert into audita values (6, 6, 'what', 6, '2018-01-01 00:30:00', '2018-01-01 01:00:00', '2018-01-01', 'mais');
-insert into audita values (7, 7, 'what', 7, '2018-01-01 00:05:00', '2018-01-01 01:10:00', '2018-01-01', 'texto');
+insert into audita values (1, 1, 'what', 1, '2018-01-01 00:00:00', '2018-01-01 00:20:00', '2018-01-01', '2018-01-02', 'oi');
+insert into audita values (2, 2, 'is', 2, '2018-01-01 00:10:00', '2018-01-01 01:00:00', '2018-01-01', '2018-02-01', 'tudo');
+insert into audita values (3, 3, 'nome', 3, '2018-01-01 00:55:00', '2018-01-01 02:00:00', '2018-01-01', '2018-01-03', 'bem');
+insert into audita values (4, 4, 'entidade', 4, '2018-01-01 01:00:00', '2018-01-01 01:50:00', '2018-01-01', '2018-01-04', 'gajas');
+insert into audita values (5, 5, 'exactly', 5, '2018-01-01 00:40:00', '2018-01-01 02:00:00', '2018-01-01', '2018-03-01', 'ya');
+insert into audita values (6, 6, 'what', 6, '2018-01-01 00:30:00', '2018-01-01 01:00:00', '2018-01-01', '2018-04-01', 'mais');
+insert into audita values (7, 7, 'what', 7, '2018-01-01 00:05:00', '2018-01-01 01:10:00', '2018-01-01', '2018-04-05', 'texto');
 
 --solicita
 insert into solicita values (1, 1, 'what', 1, '2018-01-01 00:00:00', '2018-01-01 00:20:00', 1);

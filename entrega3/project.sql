@@ -1,21 +1,21 @@
-drop table if exists camara;
-drop table if exists video;
-drop table if exists segmentoVideo;
-drop table if exists local;
-drop table if exists vigia;
-drop table if exists eventoEmergencia;
-drop table if exists processoSocorro;
-drop table if exists entidadeMeio;
-drop table if exists meio;
-drop table if exists meioCombate;
-drop table if exists meioApoio;
-drop table if exists meioSocorro;
-drop table if exists transporta;
-drop table if exists alocado;
-drop table if exists acciona;
-drop table if exists coordenador;
-drop table if exists audita;
-drop table if exists solicita;
+drop table if exists camara cascade;
+drop table if exists video cascade;
+drop table if exists segmentoVideo cascade;
+drop table if exists local cascade;
+drop table if exists vigia cascade;
+drop table if exists eventoEmergencia cascade;
+drop table if exists processoSocorro cascade;
+drop table if exists entidadeMeio cascade;
+drop table if exists meio cascade;
+drop table if exists meioCombate cascade;
+drop table if exists meioApoio cascade;
+drop table if exists meioSocorro cascade;
+drop table if exists transporta cascade;
+drop table if exists alocado cascade;
+drop table if exists acciona cascade;
+drop table if exists coordenador cascade;
+drop table if exists audita cascade;
+drop table if exists solicita cascade;
 
 ----------------------------------------
 -- Table Creation
@@ -36,7 +36,7 @@ create table segmentoVideo
    (numCamara 	integer not null unique,
     dataHoraInicioVideo  timestamp not null unique,
     numSegmento 	integer not null unique,
-    duracao   varchar(80)	not null unique, -- see if its an integer or numeric or varchar
+    duracao   numeric(16,4)	not null unique, -- see if its an integer or numeric or varchar
     constraint fk_segmentoVideo_video foreign key(numCamara) references video(numCamara), foreign key(dataHoraInicioVideo) references video(dataHoraInicioVideo),
     constraint pk_segmentoVideo primary key(numSegmento));
 
