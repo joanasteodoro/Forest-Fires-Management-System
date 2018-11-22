@@ -1,30 +1,25 @@
-drop table camara cascade;
-drop table video cascade;
-drop table segmentoVideo cascade;
-drop table local cascade;
-drop table vigia cascade;
-drop table eventoEmergencia cascade;
-drop table processoSocorro cascade;
-drop table entidadeMeio cascade;
-drop table meio cascade;
-drop table meioCombate cascade;
-drop table meioApoio cascade;
-drop table meioSocorro cascade;
-drop table transporta cascade;
-drop table alocado cascade;
-drop table acciona cascade;
-drop table coordenador cascade;
-drop table audita cascade;
-drop table solicita cascade;
+drop table if exists camara;
+drop table if exists video;
+drop table if exists segmentoVideo;
+drop table if exists local;
+drop table if exists vigia;
+drop table if exists eventoEmergencia;
+drop table if exists processoSocorro;
+drop table if exists entidadeMeio;
+drop table if exists meio;
+drop table if exists meioCombate;
+drop table if exists meioApoio;
+drop table if exists meioSocorro;
+drop table if exists transporta;
+drop table if exists alocado;
+drop table if exists acciona;
+drop table if exists coordenador;
+drop table if exists audita;
+drop table if exists solicita;
 
 ----------------------------------------
 -- Table Creation
 ----------------------------------------
-
--- Named constraints are global to the database.
--- Therefore the following use the following naming rules:
---   1. pk_table for names of primary key constraints
---   2. fk_table_another for names of foreign key constraints
 
 create table camara
   (numCamara 	integer not null unique,
@@ -150,31 +145,3 @@ create table solicita
   numCamara integer not null unique,
   constraint fk_solicita_coordenador foreign key(idCoordenador) references coordenador(idCoordenador),
   constraint fk_solicita_video foreign key(numCamara) references video(numCamara), foreign key(dataHoraInicioVideo) references video(dataHoraInicioVideo));
-
-----------------------------------------
--- Populate Relations
-----------------------------------------
-
-insert into local values ('Lisboa');
-insert into local values ('Madeira');
-insert into local values ('Santarem');
-insert into local values ('Povoa');
-insert into local values ('Aveiro');
-insert into local values ('Castelo Branco');
-insert into local values ('Figueira da Foz');
-
-insert into processoSocorro values (1);
-insert into processoSocorro values (2);
-insert into processoSocorro values (3);
-insert into processoSocorro values (4);
-insert into processoSocorro values (5);
-insert into processoSocorro values (6);
-insert into processoSocorro values (7);
-
-insert into eventoEmergencia values (123456789,	'2018-01-01 00:00:00', 'Tai',	'Lisboa', 1);
-insert into eventoEmergencia values (113456789,	'2018-02-01 00:00:00', 'Bli',	'Madeira', 2);
-insert into eventoEmergencia values (123556789,	'2017-01-01 00:00:00', 'Dani', 'Santarem', 3);
-insert into eventoEmergencia values (123456009,	'2018-01-03 00:00:00', 'Ay',	'Povoa', 4);
-insert into eventoEmergencia values (123452789,	'2018-01-07 00:02:00', 'Rocha',	'Aveiro', 5);
-insert into eventoEmergencia values (123456729,	'2018-10-08 00:00:00', 'Joana',	'Castelo Branco', 6);
-insert into eventoEmergencia values (123454449,	'2018-10-20 00:00:00', 'Tangerina',	'Figueira da Foz', 7);
