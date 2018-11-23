@@ -26,19 +26,19 @@ create table camara
   constraint pk_camara primary key(numCamara));
 
 create table video
-  (numCamara 	integer not null unique,
+  (numCamara	integer not null,
    dataHoraInicioVideo 	timestamp	not null unique,
    dataHoraFimVideo 	timestamp	not null unique,
    constraint fk_video_camara foreign key(numCamara) references camara(numCamara),
-   constraint pk_video primary key(dataHoraInicioVideo));
+   constraint pk_video primary key(numCamara, dataHoraInicioVideo));
 
 create table segmentoVideo
-   (numCamara 	integer not null unique,
-    dataHoraInicioVideo  timestamp not null unique,
+   (numCamara	integer not null,
+    dataHoraInicioVideo  timestamp not null,
     numSegmento 	integer not null unique,
-    duracao   numeric(16,4)	not null unique, -- see if its an integer or numeric or varchar
-    constraint fk_segmentoVideo_video foreign key(numCamara) references video(numCamara), foreign key(dataHoraInicioVideo) references video(dataHoraInicioVideo),
-    constraint pk_segmentoVideo primary key(numSegmento));
+    duracao   numeric(16,4)	not null, -- see if its an integer or numeric or varchar
+    constraint fk_segmentoVideo_video foreign key(numCamara, dataHoraInicioVideo) references video(numCamara, dataHoraInicioVideo),
+    constraint pk_segmentoVideo primary key(numSegmento, dataHoraInicioVideo, numCamara));
 
 create table local
    (moradaLocal varchar(80)	not null unique,
@@ -47,9 +47,10 @@ create table local
 
 create table vigia
   (numCamara 	integer not null unique,
-    moradaLocal varchar(80)	not null unique,
+    moradaLocal varchar(80)	not null,
     constraint fk_vigia_local foreign key(moradaLocal) references local(moradaLocal),
-    constraint fk_vigia_camara foreign key(numCamara) references camara(numCamara));
+    constraint fk_vigia_camara foreign key(numCamara) references camara(numCamara),
+    constraint pk_vigia primary key (numCamara, moradaLocal));
 
 create table processoSocorro
   (numProcessoSocorro integer not null unique,
@@ -61,8 +62,7 @@ create table eventoEmergencia
    nomePessoa varchar(80) not null,
    moradaLocal  varchar(80) not null,
    numProcessoSocorro integer, --verificar se e unique
-   constraint pk_numTelefone primary key(numTelefone),
-   --constraint pk_instanteChamada primary key(instanteChamada),
+   constraint pk_numTelefone primary key(numTelefone, instanteChamada),
    constraint fk_eventoEmergencia_local foreign key(moradaLocal) references local(moradaLocal),
    constraint fk_eventoEmergencia_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro),
    unique(numTelefone, nomePessoa));
@@ -75,47 +75,54 @@ create table entidadeMeio
 create table meio
   (numMeio  integer not null unique,
   nomeMeio  varchar(80) not null,
-  nomeEntidade  varchar(80) not null unique,
-  constraint pk_meio primary key(numMeio),
-  constraint fk_meio_entidadeMeio foreign key(nomeEntidade) references entidadeMeio(nomeEntidade));
+  nomeEntidade  varchar(80) not null,
+  constraint fk_meio_entidadeMeio foreign key(nomeEntidade) references entidadeMeio(nomeEntidade),
+  constraint pk_meio primary key(numMeio, nomeEntidade));
 
 create table meioCombate
   (numMeio  integer not null unique,
-  nomeEntidade  varchar(80) not null unique,
-  constraint fk_meioCombate_meio foreign key(nomeEntidade) references meio(nomeEntidade), foreign key(numMeio) references meio(numMeio));
+  nomeEntidade  varchar(80) not null,
+  constraint fk_meioCombate_meio foreign key(nomeEntidade, numMeio) references meio(nomeEntidade, numMeio),
+  constraint pk_meioCombate primary key(numMeio, nomeEntidade));
+
 
 create table meioApoio
   (numMeio  integer not null unique,
-  nomeEntidade  varchar(80) not null unique,
-  constraint fk_meioApoio_meio foreign key(nomeEntidade) references meio(nomeEntidade), foreign key(numMeio) references meio(numMeio));
+  nomeEntidade  varchar(80) not null,
+  constraint fk_meioApoio_meio foreign key(nomeEntidade, numMeio) references meio(nomeEntidade, numMeio),
+  constraint pk_meioApoio primary key(numMeio, nomeEntidade));
 
 create table meioSocorro
   (numMeio  integer not null unique,
-  nomeEntidade  varchar(80) not null unique,
-  constraint fk_meioSocorro_meio foreign key(nomeEntidade) references meio(nomeEntidade), foreign key(numMeio) references meio(numMeio));
+  nomeEntidade  varchar(80) not null,
+  constraint fk_meioSocorro_meio foreign key(nomeEntidade, numMeio) references meio(nomeEntidade, numMeio),
+  constraint pk_meioSocorro primary key(numMeio, nomeEntidade));
 
 create table transporta
-  (numMeio  integer not null unique,
+  (numMeio  integer not null,
   nomeEntidade  varchar(80) not null,
-  numVitimas  integer not null unique,
+  numVitimas  integer not null,
   numProcessoSocorro  integer not null,
-  constraint fk_transporta_meioSocorro foreign key(numMeio) references meioSocorro(numMeio), foreign key(nomeEntidade) references meioSocorro(nomeEntidade),
-  constraint fk_transporta_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro));
+  constraint fk_transporta_meioSocorro foreign key(numMeio, nomeEntidade) references meioSocorro(numMeio, nomeEntidade),
+  constraint fk_transporta_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro),
+  constraint pk_transporta primary key(numMeio, nomeEntidade, numProcessoSocorro));
 
 create table alocado
-  (numMeio  integer not null unique,
+  (numMeio  integer not null,
   nomeEntidade  varchar(80) not null,
   numHoras  integer not null,
   numProcessoSocorro  integer not null,
-  constraint fk_alocado_meioApoio foreign key(numMeio) references meioApoio(numMeio), foreign key(nomeEntidade) references meioApoio(nomeEntidade),
-  constraint fk_alocado_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro));
+  constraint fk_alocado_meioApoio foreign key(numMeio, nomeEntidade) references meioApoio(numMeio, nomeEntidade),
+  constraint fk_alocado_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro),
+  constraint pk_alocado primary key(numMeio, nomeEntidade, numProcessoSocorro));
 
 create table acciona
-  (numMeio  integer not null unique,
-  nomeEntidade  varchar(80) not null unique,
-  numProcessoSocorro  integer not null unique,
-  constraint fk_acciona_meio foreign key(numMeio) references meio(numMeio), foreign key(nomeEntidade) references meio(nomeEntidade),
-  constraint fk_acciona_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro));
+  (numMeio  integer not null,
+  nomeEntidade  varchar(80) not null,
+  numProcessoSocorro  integer not null,
+  constraint fk_acciona_meio foreign key(numMeio, nomeEntidade) references meio(numMeio, nomeEntidade),
+  constraint fk_acciona_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro),
+  constraint pk_acciona primary key(numMeio, nomeEntidade, numProcessoSocorro));
 
 create table coordenador
   (idCoordenador 	integer not null unique,
@@ -123,25 +130,26 @@ create table coordenador
 
 create table audita
   (idCoordenador  integer not null unique,
-  numMeio integer not null unique,
-  nomeEntidade  varchar(80) not null unique,
-  numProcessoSocorro  integer not null unique,
+  numMeio integer not null,
+  nomeEntidade  varchar(80) not null,
+  numProcessoSocorro  integer not null,
   dataHoraInicio timestamp not null,
   dataHoraFim timestamp not null,
   dataAuditoria date not null,
   dataAtual date not null,
   texto  text not null,
   constraint fk_audita_coordenador foreign key(idCoordenador) references coordenador(idCoordenador),
-  constraint fk_audita_acciona foreign key(numMeio) references acciona(numMeio), foreign key(nomeEntidade) references acciona(nomeEntidade),
-  foreign key(numProcessoSocorro) references acciona(numProcessoSocorro),
+  constraint fk_audita_acciona foreign key(numMeio, nomeEntidade, numProcessoSocorro) references acciona(numMeio, nomeEntidade, numProcessoSocorro),
+  constraint pk_audita primary key(idCoordenador, numMeio, nomeEntidade, numProcessoSocorro),
   check(dataHoraInicio < dataHoraFim),
   check(dataAuditoria >= dataAtual));
 
 create table solicita
-  (idCoordenador  integer not null unique,
-  dataHoraInicioVideo timestamp not null unique,
-  dataHoraInicio timestamp not null unique,
+  (idCoordenador  integer not null,
+  dataHoraInicioVideo timestamp not null,
+  dataHoraInicio timestamp not null,
   dataHoraFim timestamp not null,
-  numCamara integer not null unique,
+  numCamara integer not null,
   constraint fk_solicita_coordenador foreign key(idCoordenador) references coordenador(idCoordenador),
-  constraint fk_solicita_video foreign key(numCamara) references video(numCamara), foreign key(dataHoraInicioVideo) references video(dataHoraInicioVideo));
+  constraint fk_solicita_video foreign key(numCamara, dataHoraInicioVideo) references video(numCamara, dataHoraInicioVideo),
+  constraint pk_solicita primary key(idCoordenador, dataHoraInicioVideo, numCamara));
