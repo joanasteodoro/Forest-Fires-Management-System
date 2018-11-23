@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="index.css">
+    <script>
+        function command(id) {
+            var division = document.getElementById(id);
+            division.style.display = (division.style.display == 'block') ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+
+<h1 style="font-size:40px;">FOREST FIRES MANAGEMENT SYSTEM</h1>
+
+<p style="font-size:20px;">Welcome to Forest Fires Management System's database.</p>
+<br/>
+<table id="menu">
+    <tr>
+        <td>
+            <h3>Insert</h3>
+            <button class="option"><a href="insertLocal.html">Local</a></button></br></br>
+            <button class="option"><a href="insertLocal.html">Emergency Events</a></button></br></br>
+            <button class="option"><a href="insertLocal.html">Rescue Process</a></button></br></br>
+            <button class="option"><a href="means.html">Means</a></button></br></br>
+            <button class="option"><a href="insertEntity.html">Entity</a></button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3>Remove</h3>
+            <button class="option"><a href="insertLocal.html">Local</a></button></br></br>
+            <button class="option"><a href="insertLocal.html">Emergency Events</a></button></br></br>
+            <button class="option"><a href="insertLocal.html">Rescue Process</a></button></br></br>
+            <button class="option"><a href="insertLocal.html">Means</a></button></br></br>
+            <button class="option"><a href="insertEntity.html">Entity</a></button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3>List</h3>
+            <button class="option"><a href="listLocals.html">Rescue Processes</a></button></br></br>
+            <button class="option"><a href="listLocals.html">Means</a></button></br></br>
+            <button class="option"><a href="listEntities.html">Means of a Rescue Process</a></button></br></br>
+            <button class="option"><a href="listEntities.html">Rescue Means of Rescue Processes at a certain Local</a></button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3>Associate</h3>
+            <button class="option"><a href="associateProcessesMeans.html">Processes to Means</a></button></br></br>
+            <button class="option"><a href="associateProcessesEvents.html">Processes to Events</a></button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3>Edit</h3>
+            <button class="option"><a href="editLocal.html">Local</a></button></br></br>
+            <button class="option"><a href="editEntity.html">Entidade</a></button>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

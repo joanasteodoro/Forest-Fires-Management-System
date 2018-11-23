@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="index.css">
+    <script>
+        function command(id) {
+            var division = document.getElementById(id);
+            division.style.display = (division.style.display == 'block') ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+
+<h1 style="font-size:40px;">FOREST FIRES MANAGEMENT SYSTEM</h1>
+
+<p style="font-size:20px;">Welcome to Forest Fires Management System's database.</p>
+<br/>
+<table id="meansMenu">
+    <tr>
+        <td>
+            <h3>Insert Means</h3>
+            <button class="option"><a href="insertLocal.html">Rescue Mean</a></button></br></br>
+            <button class="option"><a href="insertLocal.html">Combat Mean</a></button></br></br>
+            <button class="option"><a href="insertEntity.html">Support Mean</a></button>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
