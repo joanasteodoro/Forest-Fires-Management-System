@@ -6,11 +6,11 @@ body{
 }
 
 table{
-    padding-left: 305px;
+    margin: auto;
 }
 
 #meansMenu{
-    padding-left: 430px;
+    margin: auto;
 }
 
 td{
