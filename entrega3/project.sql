@@ -153,3 +153,16 @@ create table solicita
   constraint fk_solicita_coordenador foreign key(idCoordenador) references coordenador(idCoordenador),
   constraint fk_solicita_video foreign key(numCamara, dataHoraInicioVideo) references video(numCamara, dataHoraInicioVideo),
   constraint pk_solicita primary key(idCoordenador, dataHoraInicioVideo, numCamara));
+
+--Trigger Functions
+create or replace function chk_remove_entity()
+  returns trigger as $body$
+  begin
+    if (select nomeEntidade from meio) where nomeEntidade = old.nomeEntidade
+    begin
+      delete from meio where nomeEntidade = old.nomeEntidade;
+    end
+  end;
+  $body$ language plpgsql;
+
+create trigger chk_rmv_entity before delete on entidadeMeio for each row execute procedure chk_remove_entity();
