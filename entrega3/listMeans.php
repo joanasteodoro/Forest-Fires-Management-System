@@ -20,7 +20,7 @@
 
         echo("<table border=\"0\" cellspacing=\"5\">\n");
         echo("<tr>\n");
-        echo("<td>Mean Number</td>\n");//ú
+        echo("<td>Mean Number</td>\n");
         echo("<td>Mean Name</td>\n");
         echo("<td>Entity Name</td>\n");
         foreach($result as $row)

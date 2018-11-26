@@ -76,26 +76,26 @@ create table meio
   (numMeio  integer not null unique,
   nomeMeio  varchar(80) not null,
   nomeEntidade  varchar(80) not null,
-  constraint fk_meio_entidadeMeio foreign key(nomeEntidade) references entidadeMeio(nomeEntidade),
+  constraint fk_meio_entidadeMeio foreign key(nomeEntidade) references entidadeMeio(nomeEntidade) on delete cascade on update cascade,
   constraint pk_meio primary key(numMeio, nomeEntidade));
 
 create table meioCombate
   (numMeio  integer not null unique,
   nomeEntidade  varchar(80) not null,
-  constraint fk_meioCombate_meio foreign key(nomeEntidade, numMeio) references meio(nomeEntidade, numMeio),
+  constraint fk_meioCombate_meio foreign key(nomeEntidade, numMeio) references meio(nomeEntidade, numMeio) on delete cascade on update cascade,
   constraint pk_meioCombate primary key(numMeio, nomeEntidade));
 
 
 create table meioApoio
   (numMeio  integer not null unique,
   nomeEntidade  varchar(80) not null,
-  constraint fk_meioApoio_meio foreign key(nomeEntidade, numMeio) references meio(nomeEntidade, numMeio),
+  constraint fk_meioApoio_meio foreign key(nomeEntidade, numMeio) references meio(nomeEntidade, numMeio) on delete cascade on update cascade,
   constraint pk_meioApoio primary key(numMeio, nomeEntidade));
 
 create table meioSocorro
   (numMeio  integer not null unique,
   nomeEntidade  varchar(80) not null,
-  constraint fk_meioSocorro_meio foreign key(nomeEntidade, numMeio) references meio(nomeEntidade, numMeio),
+  constraint fk_meioSocorro_meio foreign key(nomeEntidade, numMeio) references meio(nomeEntidade, numMeio) on delete cascade on update cascade,
   constraint pk_meioSocorro primary key(numMeio, nomeEntidade));
 
 create table transporta
@@ -103,7 +103,7 @@ create table transporta
   nomeEntidade  varchar(80) not null,
   numVitimas  integer not null,
   numProcessoSocorro  integer not null,
-  constraint fk_transporta_meioSocorro foreign key(numMeio, nomeEntidade) references meioSocorro(numMeio, nomeEntidade),
+  constraint fk_transporta_meioSocorro foreign key(numMeio, nomeEntidade) references meioSocorro(numMeio, nomeEntidade) on delete cascade on update cascade,
   constraint fk_transporta_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro),
   constraint pk_transporta primary key(numMeio, nomeEntidade, numProcessoSocorro));
 
@@ -112,7 +112,7 @@ create table alocado
   nomeEntidade  varchar(80) not null,
   numHoras  integer not null,
   numProcessoSocorro  integer not null,
-  constraint fk_alocado_meioApoio foreign key(numMeio, nomeEntidade) references meioApoio(numMeio, nomeEntidade),
+  constraint fk_alocado_meioApoio foreign key(numMeio, nomeEntidade) references meioApoio(numMeio, nomeEntidade) on delete cascade on update cascade,
   constraint fk_alocado_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro),
   constraint pk_alocado primary key(numMeio, nomeEntidade, numProcessoSocorro));
 
@@ -120,7 +120,7 @@ create table acciona
   (numMeio  integer not null,
   nomeEntidade  varchar(80) not null,
   numProcessoSocorro  integer not null,
-  constraint fk_acciona_meio foreign key(numMeio, nomeEntidade) references meio(numMeio, nomeEntidade),
+  constraint fk_acciona_meio foreign key(numMeio, nomeEntidade) references meio(numMeio, nomeEntidade) on delete cascade on update cascade,
   constraint fk_acciona_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro),
   constraint pk_acciona primary key(numMeio, nomeEntidade, numProcessoSocorro));
 
@@ -139,7 +139,7 @@ create table audita
   dataAtual date not null,
   texto  text not null,
   constraint fk_audita_coordenador foreign key(idCoordenador) references coordenador(idCoordenador),
-  constraint fk_audita_acciona foreign key(numMeio, nomeEntidade, numProcessoSocorro) references acciona(numMeio, nomeEntidade, numProcessoSocorro),
+  constraint fk_audita_acciona foreign key(numMeio, nomeEntidade, numProcessoSocorro) references acciona(numMeio, nomeEntidade, numProcessoSocorro) on delete cascade on update cascade,
   constraint pk_audita primary key(idCoordenador, numMeio, nomeEntidade, numProcessoSocorro),
   check(dataHoraInicio < dataHoraFim),
   check(dataAuditoria >= dataAtual));
@@ -155,14 +155,14 @@ create table solicita
   constraint pk_solicita primary key(idCoordenador, dataHoraInicioVideo, numCamara));
 
 --Trigger Functions
-create or replace function chk_remove_entity()
-  returns trigger as $body$
-  begin
-    if (select nomeEntidade from meio) where nomeEntidade = old.nomeEntidade
-    begin
-      delete from meio where nomeEntidade = old.nomeEntidade;
-    end
-  end;
-  $body$ language plpgsql;
+--create or replace function chk_remove_entity()
+  --returns trigger as $body$
+  --begin
+    --if (select nomeEntidade from meio) where nomeEntidade = old.nomeEntidade
+    --begin
+      --delete from meio where nomeEntidade = old.nomeEntidade;
+    --end
+  --end;
+  --$body$ language plpgsql;
 
-create trigger chk_rmv_entity before delete on entidadeMeio for each row execute procedure chk_remove_entity();
+--create trigger chk_rmv_entity after delete on entidadeMeio for each row execute procedure chk_remove_entity();
