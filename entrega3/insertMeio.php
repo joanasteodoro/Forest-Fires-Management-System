@@ -1,5 +1,6 @@
 <html>
     <body>
+      <link rel="stylesheet" href="index.css">
 <?php
     $numMeio = $_REQUEST['numMeio'];
     $nomeMeio= $_REQUEST['nomeMeio'];

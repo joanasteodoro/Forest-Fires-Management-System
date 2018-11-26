@@ -2,7 +2,7 @@
     <body>
       <link rel="stylesheet" href="index.css">
 <?php
-    $entidade= $_REQUEST['nomeEntidade'];
+    $morada = $_REQUEST['moradaLocal'];
 
     try
     {
@@ -13,13 +13,13 @@
         $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "INSERT INTO entidadeMeio values (:nomeEntidade);";
-        //echo("<p>$morada</p>");
+        $sql = "DELETE FROM local WHERE moradaLocal = (:moradaLocal);";
+        echo("<p>$morada</p>");
         //echo("<p>$PS</p>");
 
 
         $result = $db->prepare($sql);
-        $result->execute([':nomeEntidade' => $entidade]);
+        $result->execute([':moradaLocal' => $morada]);
         echo("<p>$result</p>");
 
         $db = null;

@@ -1,5 +1,6 @@
 <html>
     <body>
+      <link rel="stylesheet" href="index.css">
 <?php
     $morada = $_REQUEST['moradaLocal'];
 

@@ -1,6 +1,7 @@
 <html>
     <body>
-    <h3>Eventos de Emergencia</h3><!--ê-->
+      <link rel="stylesheet" href="index.css">
+    <h3>Emergency Events</h3><!--ê-->
 <?php
     try
     {

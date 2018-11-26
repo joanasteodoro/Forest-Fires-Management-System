@@ -1,5 +1,6 @@
 <html>
     <body>
+      <link rel="stylesheet" href="index.css">
 <?php
     $numTele = $_REQUEST['numTelefone'];
     $instante = $_REQUEST['instanteChamada'];
