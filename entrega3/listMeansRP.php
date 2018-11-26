@@ -1,11 +1,50 @@
 <html>
     <body>
       <link rel="stylesheet" href="index.css">
-        <h3>List Means accionated by a Rescue Process</h3>
-        <form action="listMeioAccionado.php" method="post">
-            <p>Rescue Process: <input type="text" name="numprocessosocorro"/></p>
+    <h3>Means</h3><!--ê-->
+<?php
+    try
+    {
+        $numProcessoSocorro = $_REQUEST['numprocessosocorro'];
 
-            <p><input type="submit" value="Submit"/></p>
-        </form>
+        $host = "db.ist.utl.pt";
+        $user ="ist186514";
+        $password = "916JEPhav";
+        $dbname = $user;
+
+        $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "SELECT numMeio FROM acciona WHERE numProcessoSocorro = :numprocessosocorro;";
+
+        $result = $db->prepare($sql);
+        $result->execute();
+
+        echo("<table border=\"0\" cellspacing=\"4\">\n");
+        echo("<tr>\n");
+        echo("<td>Mean Number</td>\n");
+        echo("<td>Mean Name</td>\n");
+        echo("<td>Entity Name</td>\n");
+        echo("<td>Rescue Process Number</td>\n");
+        foreach($result as $row)
+        {
+            echo("<tr>\n");
+            echo("<td>{$row[0]}</td>\n");
+            echo("<td>{$row[1]}</td>\n");
+            echo("<td>{$row[2]}</td>\n");
+            echo("<td>{$row[3]}</td>\n");
+
+            //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
+            echo("</tr>\n");
+        }
+        echo("</table>\n");
+
+        $db = null;
+    }
+    catch (PDOException $e)
+    {
+        echo("<p>ERROR: {$e->getMessage()}</p>");
+    }
+?>
     </body>
 </html>
