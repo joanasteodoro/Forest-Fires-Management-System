@@ -1,12 +1,11 @@
 <html>
     <body>
       <link rel="stylesheet" href="index.css">
-    <h3>Means</h3><!--ê-->
+    <h3>Accionated Means</h3><!--ê-->
 <?php
+    $PS = $_REQUEST['numprocessosocorro'];
     try
     {
-        $numProcessoSocorro = $_REQUEST['numprocessosocorro'];
-
         $host = "db.ist.utl.pt";
         $user ="ist186514";
         $password = "916JEPhav";
@@ -15,24 +14,20 @@
         $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT numMeio FROM acciona WHERE numProcessoSocorro = :numprocessosocorro;";
+        $sql = "SELECT numMeio, nomeEntidade FROM acciona WHERE numprocessosocorro = :numprocessosocorro ;";
 
         $result = $db->prepare($sql);
-        $result->execute();
+        $result->execute([':numprocessosocorro' => $PS]);
 
-        echo("<table border=\"0\" cellspacing=\"4\">\n");
+        echo("<table border=\"0\" cellspacing=\"5\">\n");
         echo("<tr>\n");
-        echo("<td>Mean Number</td>\n");
-        echo("<td>Mean Name</td>\n");
-        echo("<td>Entity Name</td>\n");
-        echo("<td>Rescue Process Number</td>\n");
+        echo("<td>Numero do Meio</td>\n");//ú
+        echo("<td>Nome da Entidade</td>\n");
         foreach($result as $row)
         {
             echo("<tr>\n");
             echo("<td>{$row[0]}</td>\n");
             echo("<td>{$row[1]}</td>\n");
-            echo("<td>{$row[2]}</td>\n");
-            echo("<td>{$row[3]}</td>\n");
 
             //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
             echo("</tr>\n");
