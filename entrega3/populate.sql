@@ -173,13 +173,13 @@ insert into coordenador values (9);
 insert into coordenador values (10);
 
 --audita
-insert into audita values (1, 1, 'what', 1, '2018-01-01 00:00:00', '2018-01-01 00:20:00', '2018-01-03', '2018-01-02', 'oi');
-insert into audita values (2, 2, 'is', 2, '2018-01-01 00:10:00', '2018-01-01 01:00:00', '2018-03-01', '2018-02-01', 'tudo');
-insert into audita values (3, 3, 'nome', 3, '2018-01-01 00:55:00', '2018-01-01 02:00:00', '2018-01-04', '2018-01-03', 'bem');
-insert into audita values (4, 4, 'entidade', 4, '2018-01-01 01:00:00', '2018-01-01 01:50:00', '2018-01-05', '2018-01-04', 'gajas');
-insert into audita values (5, 5, 'exactly', 5, '2018-01-01 00:40:00', '2018-01-01 02:00:00', '2018-03-11', '2018-03-01', 'ya');
-insert into audita values (6, 6, 'what', 6, '2018-01-01 00:30:00', '2018-01-01 01:00:00', '2018-04-11', '2018-04-01', 'mais');
-insert into audita values (7, 7, 'what', 7, '2018-01-01 00:05:00', '2018-01-01 01:10:00', '2018-05-01', '2018-04-05', 'texto');
+insert into audita values (1, 1, 'what', 1, '2018-01-01 00:00:00', '2018-01-01 00:20:00', '2019-01-03', 'oi');
+insert into audita values (2, 2, 'is', 2, '2018-01-01 00:10:00', '2018-01-01 01:00:00', '2019-03-01', 'tudo');
+insert into audita values (3, 3, 'nome', 3, '2018-01-01 00:55:00', '2018-01-01 02:00:00', '2019-01-04', 'bem');
+insert into audita values (4, 4, 'entidade', 4, '2018-01-01 01:00:00', '2018-01-01 01:50:00', '2019-01-05', 'gajas');
+insert into audita values (5, 5, 'exactly', 5, '2018-01-01 00:40:00', '2018-01-01 02:00:00', '2019-03-11', 'ya');
+insert into audita values (6, 6, 'what', 6, '2018-01-01 00:30:00', '2018-01-01 01:00:00', '2019-04-11', 'mais');
+insert into audita values (7, 7, 'what', 7, '2018-01-01 00:05:00', '2018-01-01 01:10:00', '2019-05-01', 'texto');
 
 --solicita
 insert into solicita values (1, '2018-01-01 00:00:00', '2018-01-01 00:20:00', '2018-01-01 00:20:00', 1);
