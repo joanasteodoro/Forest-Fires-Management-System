@@ -5,6 +5,7 @@
         <form action="associateProcessesMeans.php" method="post">
             <p>Rescue Process Number: <input type="text" name="numProcessoSocorro"/></p>
             <p>Mean Number:<input type="text" name="numMeio"/></p>
+            <p>Entity Name:<input type="text" name="nomeEntidade"/></p>
 
             <p><input type="submit" value="Submit"/></p>
         </form>

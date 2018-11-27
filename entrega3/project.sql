@@ -61,7 +61,7 @@ create table eventoEmergencia
    instanteChamada  timestamp not null unique,
    nomePessoa varchar(80) not null,
    moradaLocal  varchar(80) not null,
-   numProcessoSocorro integer, --verificar se e unique
+   numProcessoSocorro integer not null,
    constraint pk_numTelefone primary key(numTelefone, instanteChamada),
    constraint fk_eventoEmergencia_local foreign key(moradaLocal) references local(moradaLocal) on delete cascade on update cascade,
    constraint fk_eventoEmergencia_processoSocorro foreign key(numProcessoSocorro) references processoSocorro(numProcessoSocorro) on delete cascade on update cascade,
