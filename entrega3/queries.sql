@@ -1,5 +1,14 @@
+--1
+SELECT DISTINCT numProcessoSocorro
+FROM (SELECT numProcessoSocorro, COUNT(*)
+      FROM acciona
+      GROUP BY numProcessoSocorro
+      HAVING COUNT(*) >= all(SELECT COUNT(*)
+                       FROM acciona
+                       GROUP BY numProcessoSocorro)) as a;
+
 --2
-SELECT nomeEntidade
+SELECT DISTINCT nomeEntidade
 FROM (SELECT nomeEntidade, COUNT(*)
       FROM acciona NATURAL JOIN eventoEmergencia
       WHERE instanteChamada BETWEEN timestamp '2018-06-21 00:00:00' AND timestamp '2018-09-21 23:59:59'
