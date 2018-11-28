@@ -28,12 +28,14 @@
 
         $result3 = $db->prepare($sql3);
         $result3->execute([':numProcessoSocorro' => $PS]);
-        echo("<p>$result3 as $rows</p>");
-        /*$result1 = $db->prepare($sql1);
-        $result1->execute([':numProcessoSocorro' => $PS]);
+
+        if($result3->rowCount() == 0){
+          $result1 = $db->prepare($sql1);
+          $result1->execute([':numProcessoSocorro' => $PS]);
+        }
 
         $result2 = $db->prepare($sql2);
-        $result2->execute([':numTelefone' => $numTele, ':instanteChamada' => $instante, ':nomePessoa' => $nome, ':moradaLocal' => $morada, ':numProcessoSocorro' => $PS]);*/
+        $result2->execute([':numTelefone' => $numTele, ':instanteChamada' => $instante, ':nomePessoa' => $nome, ':moradaLocal' => $morada, ':numProcessoSocorro' => $PS]);
         echo("<p>$result</p>");
 
         $db = null;

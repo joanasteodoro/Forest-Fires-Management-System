@@ -27,15 +27,15 @@ create table camara
 
 create table video
   (numCamara	integer not null,
-   dataHoraInicioVideo 	timestamp	not null unique,
-   dataHoraFimVideo 	timestamp	not null unique,
+   dataHoraInicioVideo 	timestamp	not null,
+   dataHoraFimVideo 	timestamp	not null,
    constraint fk_video_camara foreign key(numCamara) references camara(numCamara) on delete cascade on update cascade,
    constraint pk_video primary key(numCamara, dataHoraInicioVideo));
 
 create table segmentoVideo
    (numCamara	integer not null,
     dataHoraInicioVideo  timestamp not null,
-    numSegmento 	integer not null unique,
+    numSegmento 	integer not null,
     duracao   numeric(16,4)	not null, -- see if its an integer or numeric or varchar
     constraint fk_segmentoVideo_video foreign key(numCamara, dataHoraInicioVideo) references video(numCamara, dataHoraInicioVideo) on delete cascade on update cascade,
     constraint pk_segmentoVideo primary key(numSegmento, dataHoraInicioVideo, numCamara));
