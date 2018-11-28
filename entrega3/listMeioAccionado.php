@@ -1,9 +1,9 @@
 <html>
     <body>
       <link rel="stylesheet" href="index.css">
-    <h3>Means</h3><!--ê-->
+    <h3>Accionated Means</h3><!--ê-->
 <?php
-    $table = $_REQUEST['table'];
+    $PS = $_REQUEST['numprocessosocorro'];
     try
     {
         $host = "db.ist.utl.pt";
@@ -14,23 +14,22 @@
         $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT * FROM $table;";
+        $sql = "SELECT numMeio, nomeEntidade FROM acciona WHERE numprocessosocorro = :numprocessosocorro ;";
 
         $result = $db->prepare($sql);
-        $result->execute();
+        $result->execute([':numprocessosocorro' => $PS]);
 
         echo("<table border=\"0\" cellspacing=\"5\">\n");
         echo("<tr>\n");
-        echo("<td>Mean Number</td>\n");
-        echo("<td>Entity Name</td>\n");
-
+        echo("<td>Numero do Meio</td>\n");//ú
+        echo("<td>Nome da Entidade</td>\n");
         foreach($result as $row)
         {
             echo("<tr>\n");
             echo("<td>{$row[0]}</td>\n");
-            echo("<td>{$row[1]}</td>");
+            echo("<td>{$row[1]}</td>\n");
 
-            echo("<td id='edit'><a href=\"editMeanRequest.php?table={$table}&oldNumMeio={$row[0]}&oldNomeEntidade={$row[1]}\">Edit</a></td>\n");
+            //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
             echo("</tr>\n");
         }
         echo("</table>\n");

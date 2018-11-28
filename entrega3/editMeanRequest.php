@@ -6,8 +6,7 @@
             <p><input type="hidden" name="table" value="<?=$_REQUEST['table']?>"/></p>
             <p><input type="hidden" name="oldNumMeio" value="<?=$_REQUEST['oldNumMeio']?>"/></p>
             <p><input type="hidden" name="oldNomeEntidade" value="<?=$_REQUEST['oldNomeEntidade']?>"/></p>
-            <p>Mean Number: <input type="text" name="numMeio"/></p>
-            <p>Entity name: <input type="text" name="nomeEntidade"/></p>
+            <p>New Mean Name: <input type="text" name="nomeMeio"/></p>
 
             <p><input type="submit" value="Submit"/></p>
         </form>
