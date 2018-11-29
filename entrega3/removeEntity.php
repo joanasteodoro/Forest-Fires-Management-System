@@ -12,6 +12,7 @@
         $dbname = $user;
         $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$db->beginTransaction();
 
         $sql = "DELETE FROM entidadeMeio WHERE nomeEntidade = (:nomeEntidade);";
         echo("<p>$nomeEntidade</p>");
@@ -22,6 +23,7 @@
         $result->execute([':nomeEntidade' => $nomeEntidade]);
         echo("<p>$result</p>");
 
+	$db->commit();
         $db = null;
     }
     catch (PDOException $e)
