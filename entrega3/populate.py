@@ -29,21 +29,21 @@ for i in range(100):
 
 f.write("\n--video\n")
 for i in range(100):
-    f.write("insert into video values ("+str(i)+",'"+str(random_date(i*9))+"','"+str(random_date(i*9+1))+"');\n")
+    f.write("insert into video values ("+str(i+1)+",'"+str(random_date(i*9))+"','"+str(random_date(i*9+1))+"');\n")
 
 f.write("\n--segmentovideo\n")
 
 for i in range(100):
     date = random_date(i*9+2)
-    f.write("insert into segmentoVideo values ("+str(i+1)+", '"+str(date)+"', "+str(1)+", "+str(random.randint(20,50))+");\n")
+    f.write("insert into segmentoVideo values ("+str(i+1)+", '"+str(random_date(i*9))+"', "+str(1)+", "+str(random.randint(20,50))+");\n")
     date = date.replace(hour=1)
-    f.write("insert into segmentoVideo values ("+str(i+1)+", '"+str(date)+"', "+str(2)+", "+str(random.randint(20,50))+");\n")
+    f.write("insert into segmentoVideo values ("+str(i+1)+", '"+str(random_date(i*9)))+"', "+str(2)+", "+str(random.randint(20,50))+");\n")
     date = date.replace(hour=2)
-    f.write("insert into segmentoVideo values ("+str(i+1)+", '"+str(date)+"', "+str(3)+", "+str(random.randint(20,50))+");\n")
+    f.write("insert into segmentoVideo values ("+str(i+1)+", '"+str(random_date(i*9)))+"', "+str(3)+", "+str(random.randint(20,50))+");\n")
     date = date.replace(hour=3)
-    f.write("insert into segmentoVideo values ("+str(i+1)+", '"+str(date)+"', "+str(4)+", "+str(random.randint(20,50))+");\n")
+    f.write("insert into segmentoVideo values ("+str(i+1)+", '"+str(random_date(i*9)))+"', "+str(4)+", "+str(random.randint(20,50))+");\n")
     date = date.replace(hour=4)
-    f.write("insert into segmentoVideo values ("+str(i+1)+", '"+str(date)+"', "+str(5)+", "+str(random.randint(20,50))+");\n")
+    f.write("insert into segmentoVideo values ("+str(i+1)+", '"+str(random_date(i*9)))+"', "+str(5)+", "+str(random.randint(20,50))+");\n")
 
 
 f.write("\n--local\n")
