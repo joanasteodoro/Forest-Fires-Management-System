@@ -31,7 +31,7 @@
             echo("<td>{$row[1]}</td>\n");
             echo("<td>{$row[2]}</td>\n");
 
-            echo("<td id='edit'><a href=\"removeMean.php?table={$table}&oldNumMeio={$row[0]}&oldNomeEntidade={$row[1]}\">Remove</a></td>\n");
+            echo("<td id='edit'><a href=\"removeMean.php?numMeio={$row[0]}&nomeEntidade={$row[2]}\">Remove</a></td>\n");
             echo("</tr>\n");
         }
         echo("</table>\n");

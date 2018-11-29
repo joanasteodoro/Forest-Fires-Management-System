@@ -14,19 +14,18 @@
         $dbname = $user;
         $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$db->beginTransaction();
+	      $db->beginTransaction();
 
-        $sql = "DELETE FROM eventoEmergencia WHERE (numTelefone = :numTelefone AND instanteChamada = :instanteChamada);";
+        $sql = "DELETE FROM eventoEmergencia WHERE (numTelefone = (:numTelefone) AND instanteChamada = (:instanteChamada));";
         echo("<p>$instanteChamada</p>");
         echo("<p>$numTelefone</p>");
-        //echo("<p>$PS</p>");
 
 
         $result = $db->prepare($sql);
         $result->execute([':numTelefone' => $numTelefone, ':instanteChamada' => $instanteChamada]);
         echo("<p>$result</p>");
 
-	$db->commit();
+	      $db->commit();
         $db = null;
     }
     catch (PDOException $e)

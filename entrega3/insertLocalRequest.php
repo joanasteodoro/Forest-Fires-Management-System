@@ -5,7 +5,6 @@
         <form action="insertLocal.php" method="post">
             <p>Address: <input type="text" name="moradaLocal"/></p>
 
-
             <p><input type="submit" value="Submit"/></p>
         </form>
     </body>

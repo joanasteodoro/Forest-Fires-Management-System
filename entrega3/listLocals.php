@@ -21,7 +21,7 @@
         echo("<table border=\"0\" cellspacing=\"5\">\n");
         echo("<tr>\n");
         echo("<td>Address</td>\n");
-        echo("<td id='edit'><a href=\"insertMeanRequest.php?table={$table}&oldNumMeio={$row[0]}&oldNomeEntidade={$row[1]}\">Insert</a></td>\n");
+        echo("<td id='edit'><a href=\"insertLocalRequest.php\">Insert</a></td>\n");
         foreach($result as $row)
         {
             echo("<tr>\n");

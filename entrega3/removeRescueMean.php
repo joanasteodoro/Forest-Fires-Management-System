@@ -15,8 +15,8 @@
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $db->beginTransaction();
-	
-	$sql_aux = "DELETE FROM transporta WHERE numMeio = :numMeio AND nomeEntidade = :nomeEntidade;";
+
+	      $sql_aux = "DELETE FROM transporta WHERE numMeio = :numMeio AND nomeEntidade = :nomeEntidade;";
         $sql = "DELETE FROM meioSocorro WHERE numMeio = :numMeio AND nomeEntidade = :nomeEntidade;";
 
 

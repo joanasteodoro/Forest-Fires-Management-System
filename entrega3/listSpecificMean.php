@@ -23,7 +23,7 @@
         echo("<tr>\n");
         echo("<td>Mean Number</td>\n");
         echo("<td>Entity Name</td>\n");
-        echo("<td id='edit'><a href=\"insertMeanRequest.php?\">Insert</a></td>\n");
+        echo("<td id='edit'><a href=\"insertSpecificMeanRequest.php?table={$table}\">Insert</a></td>\n");
         foreach($result as $row)
         {
             echo("<tr>\n");
