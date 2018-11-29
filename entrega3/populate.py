@@ -113,6 +113,13 @@ for i in range(150):
     f.write("insert into coordenador values ("+str(i+1)+");\n")
 
 f.write("\n--audita\n")
-#for i in range(100):
-#    f.write("insert into audita values ("+str(i+1))
-#    f.write(",
+for i in range(100):
+    f.write("insert into audita values ("+str(i+1))
+    f.write(",1, 'Entidade-"+str(i+1)+"', "+str(i+1))
+    f.write(", "+random_date(i*10)+", "+random_date(i*10+1)+", "+random_date(i*10+100))
+    f.write(", 'uhhhhhhhhhhhhhhhhheyyayeyeyrayyayayyryeyeyayayyyryrr ai say hey whats going on');")
+f.write("\n--solicita\n")
+for i in range(100):
+    f.write("insert into solicita values ("+str(i+1))
+    f.write(", "+random_date(i*9)+", "+random_date(i*10)+", "+random_date(i*10+1))
+    f.write(", "+str(i+1)+");")
