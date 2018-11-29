@@ -25,12 +25,13 @@ for i in range(100):
 
 f = open("populate_custom.sql","w")
 f.write("--camara\n")
-for i in range(100):
+for i in range(150):
     f.write("insert into camara values ("+str(i+1)+");\n")
 
 f.write("\n--video\n")
 for i in range(100):
     f.write("insert into video values ("+str(i+1)+",'"+str(random_date(i*9))+"','"+str(random_date(i*9+1))+"');\n")
+f.write("insert into video values (101,'2018-08-09 00:00:00','2018-09-09 00:00:00');\n")
 
 f.write("\n--segmentovideo\n")
 
@@ -45,6 +46,9 @@ for i in range(100):
     f.write("insert into segmentoVideo values ("+str(i+1)+", '"+str(random_date(i*9))+"', "+str(4)+", "+str(random.randint(20,50))+");\n")
     date = date.replace(hour=4)
     f.write("insert into segmentoVideo values ("+str(i+1)+", '"+str(random_date(i*9))+"', "+str(5)+", "+str(random.randint(20,50))+");\n")
+f.write("insert into segmentoVideo values (101, '2018-08-09 00:00:00', "+str(1)+", 70);\n")
+f.write("insert into segmentoVideo values (101, '2018-08-09 00:00:00', "+str(2)+", 65);\n")
+f.write("insert into segmentoVideo values (101, '2018-08-09 00:00:00', "+str(3)+", 100);\n")
 
 
 f.write("\n--local\n")
@@ -65,6 +69,7 @@ f.write("insert into local values ('Monchique');\n")
 f.write("\n--vigia\n")
 for i in range(100):
     f.write("insert into vigia values ('"+str(i+1)+"', '"+concelhos[added_concelhos[i]]+"');\n")
+f.write("insert into vigia values ('101', 'Monchique');\n")
 
 
 f.write("\n--processoSocorro\n")
