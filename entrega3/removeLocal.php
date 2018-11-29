@@ -15,8 +15,8 @@
 	$db->beginTransaction();
 
         $sql1 = "DELETE FROM vigia WHERE moradaLocal = (:moradaLocal);";
-        $sql1 = "DELETE FROM vigia WHERE moradaLocal = (:moradaLocal);";
-        $sql2 = "DELETE FROM local WHERE moradaLocal = (:moradaLocal);";
+        $sql2 = "DELETE FROM eventoEmergencia WHERE moradaLocal = (:moradaLocal);";
+        $sql3 = "DELETE FROM local WHERE moradaLocal = (:moradaLocal);";
         echo("<p>$morada</p>");
         //echo("<p>$PS</p>");
 
@@ -26,6 +26,9 @@
 
         $result2 = $db->prepare($sql2);
         $result2->execute([':moradaLocal' => $morada]);
+
+        $result3 = $db->prepare($sql3);
+        $result3->execute([':moradaLocal' => $morada]);
         echo("<p>$result</p>");
 
 	$db->commit();
