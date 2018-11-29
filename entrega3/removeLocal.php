@@ -13,13 +13,18 @@
         $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "DELETE FROM local WHERE moradaLocal = (:moradaLocal);";
+        $sql1 = "DELETE FROM vigia WHERE moradaLocal = (:moradaLocal);";
+        $sql1 = "DELETE FROM vigia WHERE moradaLocal = (:moradaLocal);";
+        $sql2 = "DELETE FROM local WHERE moradaLocal = (:moradaLocal);";
         echo("<p>$morada</p>");
         //echo("<p>$PS</p>");
 
 
-        $result = $db->prepare($sql);
-        $result->execute([':moradaLocal' => $morada]);
+        $result1 = $db->prepare($sql1);
+        $result1->execute([':moradaLocal' => $morada]);
+
+        $result2 = $db->prepare($sql2);
+        $result2->execute([':moradaLocal' => $morada]);
         echo("<p>$result</p>");
 
         $db = null;
