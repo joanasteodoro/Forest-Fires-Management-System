@@ -23,7 +23,7 @@
         echo("<tr>\n");
         echo("<td>Mean Number</td>\n");
         echo("<td>Entity Name</td>\n");
-
+        echo("<td id='edit'><a href=\"insertMeanRequest.php?\">Insert</a></td>\n");
         foreach($result as $row)
         {
             echo("<tr>\n");
@@ -31,6 +31,15 @@
             echo("<td>{$row[1]}</td>");
 
             echo("<td id='edit'><a href=\"editMeanRequest.php?table={$table}&oldNumMeio={$row[0]}&oldNomeEntidade={$row[1]}\">Edit</a></td>\n");
+            if($table == "meioSocorro"){
+              echo("<td id='edit'><a href=\"removeRescueMean.php?numMeio={$row[0]}&nomeEntidade={$row[1]}\">Remove</a></td>\n");
+            }
+            elseif ($table == "meioCombate") {
+              echo("<td id='edit'><a href=\"removeCombatMean.php?numMeio={$row[0]}&nomeEntidade={$row[1]}\">Remove</a></td>\n");
+            }
+            elseif ($table == "meioApoio") {
+              echo("<td id='edit'><a href=\"removeSupportMean.php?numMeio={$row[0]}&nomeEntidade={$row[1]}\">Remove</a></td>\n");
+            }
             echo("</tr>\n");
         }
         echo("</table>\n");

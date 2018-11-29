@@ -23,6 +23,7 @@
         echo("<td>Mean Number</td>\n");
         echo("<td>Mean Name</td>\n");
         echo("<td>Entity Name</td>\n");
+        echo("<td id='edit'><a href=\"insertMeanRequest.php\">Insert</a></td>\n");
         foreach($result as $row)
         {
             echo("<tr>\n");
@@ -30,7 +31,7 @@
             echo("<td>{$row[1]}</td>\n");
             echo("<td>{$row[2]}</td>\n");
 
-            //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
+            echo("<td id='edit'><a href=\"removeMean.php?table={$table}&oldNumMeio={$row[0]}&oldNomeEntidade={$row[1]}\">Remove</a></td>\n");
             echo("</tr>\n");
         }
         echo("</table>\n");

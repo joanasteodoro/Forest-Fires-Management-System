@@ -18,28 +18,20 @@
 <table id="menu">
     <tr>
         <td>
-            <h3>Insert</h3>
-            <button class="option" onclick = "location.href = 'insertLocalRequest.php';">Local</button></br></br>
-            <button class="option" onclick = "location.href = 'insertEventRequest.php';">Emergency Event</button></br></br>
-            <button class="option" onclick = "location.href = 'insertMeioRequest.php';">Mean</button></br></br>
-            <button class="option" onclick = "location.href = 'insertEntityRequest.php';">Entity</button>
+            <h3>Insert / List / Edit / Remove</h3>
+            <button class="option" onclick = "location.href = 'listLocals.php';">Local</button></br></br>
+            <button class="option" onclick = "location.href = 'listEvents.php';">Emergency Event</button></br></br>
+            <button class="option" onclick = "location.href = 'listMeans.php';">Mean</button></br></br>
+            <button class="option" onclick = "location.href = 'listSpecificMean.php?table=meioSocorro';">Rescue Mean</button>
+            <button class="option" onclick = "location.href = 'listSpecificMean.php?table=meioCombate';">Combat Mean</button>
+            <button class="option" onclick = "location.href = 'listSpecificMean.php?table=meioApoio';">Support Mean</button></br></br>
+            <button class="option" onclick = "location.href = 'listEntities.php';">Entity</button></br></br>
+            <button class="option" onclick = "location.href = 'listRescueProcesses.php';">Rescue Process</button>
         </td>
     </tr>
     <tr>
         <td>
-            <h3>Remove</h3>
-            <button class="option" onclick = "location.href = 'removeLocalRequest.php';">Local</button></br></br>
-            <button class="option" onclick = "location.href = 'removeEventsRequest.php';">Emergency Event</button></br></br>
-            <button class="option" onclick = "location.href = 'removeRPRequest.php';">Rescue Process</button></br></br>
-            <button class="option" onclick = "location.href = 'removeMeansRequest.php';">Mean</button></br></br>
-            <button class="option" onclick = "location.href = 'removeEntityRequest.php';">Entity</button>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <h3>List</h3>
-            <button class="option" onclick = "location.href = 'listRescueProcesses.php';">Rescue Processes</button></br></br>
-            <button class="option" onclick = "location.href = 'listMeans.php';">Means</button></br></br>
+            <h3>List Others</h3>
             <button class="option" onclick = "location.href = 'listMeansRPRequest.php';">Means of a Rescue Process</button></br></br>
             <button class="option" onclick = "location.href = 'listMeansSOSRequest.php';">Rescue Means of Rescue Processes at a Certain Local</button>
         </td>
@@ -48,12 +40,6 @@
         <td>
             <h3>Associate</h3>
             <button class="option" onclick = "location.href = 'associateProcessesMeansRequest.php';">Process to Mean</button></br></br>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <h3>Edit</h3>
-            <button class="option" onclick="location.href = 'means.html';">Means</button></br></br>
         </td>
     </tr>
 </table>

@@ -1,7 +1,7 @@
 <html>
     <body>
       <link rel="stylesheet" href="index.css">
-    <h3>Rescue Processes</h3><!--ê-->
+    <h3>Locals</h3><!--ê-->
 <?php
     try
     {
@@ -13,20 +13,21 @@
         $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT * FROM processoSocorro;";
+        $sql = "SELECT * FROM local;";
 
         $result = $db->prepare($sql);
         $result->execute();
 
         echo("<table border=\"0\" cellspacing=\"5\">\n");
         echo("<tr>\n");
-        echo("<td>Rescue Process Number</td>\n");
+        echo("<td>Address</td>\n");
+        echo("<td id='edit'><a href=\"insertMeanRequest.php?table={$table}&oldNumMeio={$row[0]}&oldNomeEntidade={$row[1]}\">Insert</a></td>\n");
         foreach($result as $row)
         {
             echo("<tr>\n");
             echo("<td>{$row[0]}</td>\n");
 
-            echo("<td id='edit'><a href=\"removeRP.php?numProcessoSocorro={$row[0]}\">Remove</a></td>\n");
+            echo("<td id='edit'><a href=\"removeLocal.php?moradaLocal={$row[0]}\">Remove</a></td>\n");
             echo("</tr>\n");
         }
         echo("</table>\n");

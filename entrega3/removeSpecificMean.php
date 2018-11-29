@@ -2,8 +2,8 @@
     <body>
       <link rel="stylesheet" href="index.css">
 <?php
+    $nomeEntid = $_REQUEST['nomeEntidade'];
     $numMeio = $_REQUEST['numMeio'];
-    $table = $_REQUEST['table'];
 
     try
     {

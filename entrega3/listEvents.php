@@ -25,6 +25,7 @@
         echo("<td>Nome da Testemunha</td>\n");
         echo("<td>Morada</td>\n");
         echo("<td>Processo de Socorro</td>\n");
+        echo("<td id='edit'><a href=\"insertEventRequest.php\">Insert</a></td>\n");
         foreach($result as $row)
         {
             echo("<tr>\n");
@@ -34,7 +35,7 @@
             echo("<td>{$row[3]}</td>\n");
             echo("<td>{$row[4]}</td>\n");
 
-            //echo("<td><a href=\"balance.php?account_number={$row['account_number']}\">Change balance</a></td>\n");
+            echo("<td id='edit'><a href=\"removeEvent.php?numTelefone={$row[0]}&instanteChamada={$row[1]}\">Remove</a></td>\n");
             echo("</tr>\n");
         }
         echo("</table>\n");
