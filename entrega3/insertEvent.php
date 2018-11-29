@@ -21,11 +21,8 @@
 
         $sql1 = "INSERT INTO processoSocorro values (:numProcessoSocorro);";
         $sql2 = "INSERT INTO eventoEmergencia values (:numTelefone, :instanteChamada, :nomePessoa,	:moradaLocal, :numProcessoSocorro);";
-        echo("<p>$numTele</p>");
-        echo("<p>$instante</p>");
-        echo("<p>$nome</p>");
-        echo("<p>$morada</p>");
 
+	$db -> beginTransaction();
         $result3 = $db->prepare($sql3);
         $result3->execute([':numProcessoSocorro' => $PS]);
 
@@ -36,9 +33,15 @@
 
         $result2 = $db->prepare($sql2);
         $result2->execute([':numTelefone' => $numTele, ':instanteChamada' => $instante, ':nomePessoa' => $nome, ':moradaLocal' => $morada, ':numProcessoSocorro' => $PS]);
-        echo("<p>$result</p>");
 
+	$db -> commit();
         $db = null;
+
+        echo("<p>$numTele</p>");
+        echo("<p>$instante</p>");
+        echo("<p>$nome</p>");
+        echo("<p>$morada</p>");
+        echo("<p>$result</p>");
     }
     catch (PDOException $e)
     {
