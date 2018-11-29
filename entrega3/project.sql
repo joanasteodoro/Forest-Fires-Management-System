@@ -73,27 +73,27 @@ create table entidadeMeio
   constraint pk_entidadeMeio primary key(nomeEntidade));
 
 create table meio
-  (numMeio  integer not null unique,
+  (numMeio  integer not null,
   nomeMeio  varchar(80) not null,
   nomeEntidade  varchar(80) not null,
   constraint fk_meio_entidadeMeio foreign key(nomeEntidade) references entidadeMeio(nomeEntidade) on delete cascade on update cascade,
   constraint pk_meio primary key(numMeio, nomeEntidade));
 
 create table meioCombate
-  (numMeio  integer not null unique,
+  (numMeio  integer not null,
   nomeEntidade  varchar(80) not null,
   constraint fk_meioCombate_meio foreign key(nomeEntidade, numMeio) references meio(nomeEntidade, numMeio) on delete cascade on update cascade,
   constraint pk_meioCombate primary key(numMeio, nomeEntidade));
 
 
 create table meioApoio
-  (numMeio  integer not null unique,
+  (numMeio  integer not null,
   nomeEntidade  varchar(80) not null,
   constraint fk_meioApoio_meio foreign key(nomeEntidade, numMeio) references meio(nomeEntidade, numMeio) on delete cascade on update cascade,
   constraint pk_meioApoio primary key(numMeio, nomeEntidade));
 
 create table meioSocorro
-  (numMeio  integer not null unique,
+  (numMeio  integer not null,
   nomeEntidade  varchar(80) not null,
   constraint fk_meioSocorro_meio foreign key(nomeEntidade, numMeio) references meio(nomeEntidade, numMeio) on delete cascade on update cascade,
   constraint pk_meioSocorro primary key(numMeio, nomeEntidade));
