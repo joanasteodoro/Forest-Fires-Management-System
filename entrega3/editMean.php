@@ -25,8 +25,8 @@
 
         $result1 = $db->prepare($sql1);
         $result1->execute([':nomeMeio' => $nomeMeio, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEntidade]);
+        echo("<button class=\"option\" onclick = \"location.href = 'index.html';\">Back to home page</button></br></br>");
 
-        echo("<p>$result</p>");
 
 	$db->commit();
         $db = null;

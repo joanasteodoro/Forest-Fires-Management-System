@@ -15,7 +15,7 @@
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $db->beginTransaction();
-	
+
 	$sql_aux = "DELETE FROM alocado WHERE numMeio = :numMeio AND nomeEntidade = :nomeEntidade;";
         $sql = "DELETE FROM meioApoio WHERE numMeio = :numMeio AND nomeEntidade = :nomeEntidade;";
 
@@ -25,7 +25,7 @@
 
         $result = $db->prepare($sql);
         $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
-        echo("<p>$result</p>");
+        echo("<button class=\"option\" onclick = \"location.href = 'index.html';\">Back to home page</button></br></br>");
 
         $db->commit();
         $db = null;

@@ -1,7 +1,7 @@
 <html>
     <body>
       <link rel="stylesheet" href="index.css">
-        <h3>Insert <?=$_REQUEST['table']; $_REQUEST['nomeMeio']?></h3>
+        <h3>Insert <?=$_REQUEST['table']?></h3>
         <form action="insertSpecificMean.php" method="post">
             <p><input type="hidden" name="table" value="<?=$_REQUEST['table']?>"/></p>
             <p>Mean Number: <input type="text" name="numMeio"/></p>

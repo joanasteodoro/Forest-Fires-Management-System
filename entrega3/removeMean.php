@@ -33,7 +33,8 @@
         $result5 = $db->prepare($sql5);
         $result5->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
         echo("<p>$numMeio</p>");
-        echo("<p>$result</p>");
+        echo("<button class=\"option\" onclick = \"location.href = 'index.html';\">Back to home page</button></br></br>");
+
 
 	      $db->commit();
         $db = null;

@@ -37,7 +37,7 @@
         $result5->execute([':numProcessoSocorro' => $numProcessoSocorro]);
         $result6 = $db->prepare($sql6);
         $result6->execute([':numProcessoSocorro' => $numProcessoSocorro]);
-        echo("<p>$result</p>");
+        echo("<button class=\"option\" onclick = \"location.href = 'index.html';\">Back to home page</button></br></br>");
 
 	      $db->commit();
         $db = null;

@@ -27,7 +27,8 @@
 
         $result3 = $db->prepare($sql3);
         $result3->execute([':moradaLocal' => $morada]);
-        echo("<p>$result</p>");
+        echo("<button class=\"option\" onclick = \"location.href = 'index.html';\">Back to home page</button></br></br>");
+
 
 	      $db->commit();
         $db = null;

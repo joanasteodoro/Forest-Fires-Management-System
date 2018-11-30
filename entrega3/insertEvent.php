@@ -33,15 +33,18 @@
 
         $result2 = $db->prepare($sql2);
         $result2->execute([':numTelefone' => $numTele, ':instanteChamada' => $instante, ':nomePessoa' => $nome, ':moradaLocal' => $morada, ':numProcessoSocorro' => $PS]);
-
-	$db -> commit();
-        $db = null;
-
         echo("<p>$numTele</p>");
         echo("<p>$instante</p>");
         echo("<p>$nome</p>");
         echo("<p>$morada</p>");
         echo("<p>$result</p>");
+        echo("<button class=\"option\" onclick = \"location.href = 'index.html';\">Back to home page</button></br></br>");
+
+
+	$db -> commit();
+        $db = null;
+
+
     }
     catch (PDOException $e)
     {

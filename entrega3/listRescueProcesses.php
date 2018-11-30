@@ -21,6 +21,7 @@
         echo("<table border=\"0\" cellspacing=\"5\">\n");
         echo("<tr>\n");
         echo("<td>Rescue Process Number</td>\n");
+        echo("<td id='edit'><a href=\"insertEventRequest.php\">Insert</a></td>\n");
         foreach($result as $row)
         {
             echo("<tr>\n");

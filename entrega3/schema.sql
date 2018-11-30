@@ -57,7 +57,7 @@ create table processoSocorro
     constraint pk_processoSocorro primary key(numProcessoSocorro)); -- ver ri
 
 create table eventoEmergencia
-   (numTelefone integer not null unique,
+   (numTelefone varchar(9) not null unique,
    instanteChamada  timestamp not null unique,
    nomePessoa varchar(80) not null,
    moradaLocal  varchar(80) not null,

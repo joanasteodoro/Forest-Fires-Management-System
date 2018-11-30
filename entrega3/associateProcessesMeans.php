@@ -22,7 +22,7 @@
 
         $result = $db->prepare($sql);
         $result->execute([':numMeio' => $numMeio, ':numProcessoSocorro' => $numProcessoSocorro, ':nomeEntidade' => $entidade]);
-        echo("<p>$result</p>");
+        echo("<button class=\"option\" onclick = \"location.href = 'index.html';\">Back to home page</button></br></br>");
 
         $db = null;
     }

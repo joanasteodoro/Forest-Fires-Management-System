@@ -15,6 +15,7 @@
         $dbname = $user;
         $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db->beginTransaction();
 
 
         $sql3 = "SELECT * FROM meio WHERE (numMeio = :numMeio AND nomeEntidade = :nomeEntidade) ;";
@@ -22,6 +23,9 @@
         $sql2 = "INSERT INTO $table values (:numMeio, :nomeEntidade);";
         echo("<p>$table</p>");
         //echo("<p>$PS</p>");
+
+        $result3 = $db->prepare($sql3);
+        $result3->execute([':numMeio' => $numMeio, ':nomeEntidade' => $entidade]);
 
 
         if($result3->rowCount() == 0){
@@ -31,8 +35,10 @@
 
         $result2 = $db->prepare($sql2);
         $result2->execute([':numMeio' => $numMeio, ':nomeEntidade' => $entidade]);
-        echo("<p>$result</p>");
+        echo("<button class=\"option\" onclick = \"location.href = 'index.html';\">Back to home page</button></br></br>");
 
+
+        $db->commit();
         $db = null;
     }
     catch (PDOException $e)
