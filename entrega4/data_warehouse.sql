@@ -1,7 +1,7 @@
 drop table if exists d_evento cascade;
 drop table if exists d_meio cascade;
 drop table if exists d_tempo cascade;
-drop table if exists d_facto cascade;
+drop table if exists factos cascade;
 
 
 create table d_evento(
@@ -15,7 +15,7 @@ create table d_meio(
   numMeio integer not null,
   nomeMeio varchar(60) not null,
   nomeEntidade varchar(60) not null,
-  tipo varchar(60) not null,
+  tipo varchar(60),
   idMeio serial not null,
   primary key(idMeio)
 );
@@ -28,7 +28,7 @@ create table d_tempo(
   primary key(idTempo)
 );
 
-create table d_facto(
+create table factos(
   idEvento integer not null,
   idMeio integer not null,
   idTempo integer not null,

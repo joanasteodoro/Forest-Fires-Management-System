@@ -1626,6 +1626,7 @@ insert into meio values(2, 'Combate', 'Entidade-100');
 insert into meio values(3, 'Socorro', 'Entidade-100');
 insert into meio values(4, 'Socorro', 'ASAE');
 insert into meio values(1, 'Combate', 'ASAE');
+insert into meio values(6, 'Combate', 'ASAE');
 
 --meioCombate
 insert into meioCombate values (2, 'Entidade-1');
