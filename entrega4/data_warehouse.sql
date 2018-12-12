@@ -1,18 +1,18 @@
-drop table if exists d_evento;
-drop table if exists d_meio;
-drop table if exists d_tempo;
-drop table if exists d_cena;
+drop table if exists d_evento cascade;
+drop table if exists d_meio cascade;
+drop table if exists d_tempo cascade;
+drop table if exists d_cena cascade;
 
 
 create table d_evento(
-  idEvento integer not null unique,
+  idEvento serial not null unique,
   numTelefone varchar(9) not null,
   instanteChamada timestamp not null,
   primary key(idEvento)
 );
 
 create table d_meio(
-  idMeio integer not null unique,
+  idMeio serial not null unique,
   numMeio integer not null,
   nomeMeio varchar(60) not null,
   nomeEntidade varchar(60) not null,
@@ -23,10 +23,11 @@ create table d_meio(
 create table d_tempo(
   dia integer not null,
   mes integer not null,
-  ano integer not null
+  ano integer not null,
+  primary key(dia, mes, ano)
 );
 
-create table d_cena(
+create table d_facto(
   idEvento integer not null,
   idMeio integer not null,
   dia integer not null,
